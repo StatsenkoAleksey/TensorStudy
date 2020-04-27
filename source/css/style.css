@@ -56,7 +56,11 @@ header p {
 }
 
 .user-name {
-  margin-bottom: 0;
+  margin: 0 auto;
+  width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .user-information {
