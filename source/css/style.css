@@ -1,70 +1,231 @@
 body {
-  text-align: center;
-  font-size: 18px;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
+  font-family: Roboto, sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
-#wraper {
-  width: 900px;
-  max-width: 900px;
-  margin: 0 auto;
+.wrapper {
+  display: flex;  
+  flex-flow: row wrap;
 }
 
-header {
-  margin: 40px 0;
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
 }
 
-header img {
-  height: 30px;
+.header {
+  background: #37ABFF;
 }
 
-header span {
-  font-size: 40px;
-  text-transform: uppercase;
+.header__navigation {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  display: flex;  
 }
 
-header span:after {
-  content: '';
-  display: block;
-  width: 150px;
-  border-top: 3px solid #000000;
-  margin: 20px auto;
+a {
+  text-decoration: none;  
 }
 
-header p {
-  margin-top: 40px;
+.header__title {
+  display: block;  
+  margin: 26px 40px;
+  padding: 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #fff;
 }
 
-.user {
-  width: 30%;
-  display: inline-block;
-  padding-bottom: 20px;
-  margin-top: 30px;
+.header__navigation__item {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #59B9FF;
+  margin: 15px 30px;
 }
 
-.user:hover {
-  box-shadow: 0 5px 5px 1px rgba(100,100,100,0.2);
+.header__navigation:last-child {
+  margin-right: 40px;
+}
+
+.header__spacer {
+  flex-grow: 1;
+}
+
+.aside {
+  background: #EDEDED;
+  flex: 1 0 0;
+  padding: 0;
+}
+
+.aside__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aside__menu li:hover {
+  background: #DCDCDC;
   cursor: pointer;
 }
 
-.user img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 50%;
+.aside__menu__item {
+  display: inline-block;
+  max-width: 300px;
+  text-align: left;
+  margin: 0;
+  padding: 19px 40px;
+  font-size: 18px;
+  line-height: 21px;
+  vertical-align: middle;
 }
 
-.user-name {
-  margin: 0 auto;
-  width: 70%;
+.aside__menu__item_active {
+  background: #DCDCDC;
+}
+
+.article__main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.article__main__item {
+  width: 230px;
+  height: 340px;
+  background: #F3F3F3;
+  border-radius: 10px;
+  margin: 40px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  display: flex;  
+  flex-flow: row wrap;
+}
+
+.article__main__item > * {  
+  flex: 1 100%;
+}
+
+.article__main__item:hover {
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.25);
+}
+
+.article__main__item__image {
+  border-radius: 10px 10px 0 0;
+  height: 120px;
+}
+
+.article__main__item__information{
+  margin: 0;
+  padding: 0 12px;
+  width: 206px;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #464646;
+  margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.user-information {
-  font-size: 0.8em;
-  color: #cccccc;
-  margin: 10px;
+.item-date {
+  font-size: 10px;
+  line-height: 12px;
+  color: #ABABAB;
+}
+
+.item-text {
+  font-size: 12px;
+  line-height: 14px;
+  color: #464646;
+}
+
+.article__main__item__ref {
+  background: #DCDCDC;
+  height: 40px;
+  display: block;
+  text-align: center;
+  align-self: flex-end;
+  border-radius: 0 0 10px 10px;
+  margin: 0;
+}
+
+.article__main__item__ref {
+  cursor: pointer;
+}
+
+.item-ref {  
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #464646;
+  margin: 10px auto;
+}
+
+.article__more-cards {
+  background: #37ABFF;  
+  border-radius: 8px;
+  padding: 17px 56px;
+  width: 248px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  margin: 20px auto;
+}
+
+.article__more-cards:hover {
+  cursor: pointer;
+}
+
+.article__more-cards a {
+  color: #FFFFFF;
+}
+
+
+.footer {
+  background: #3C3C3C;
+  display: flex;
+}
+
+.footer__spacer {
+  flex-grow: 1;
+}
+
+.footer__copyrights, .footer__agreement {
+  color: #fff;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 17px 40px;
+}
+
+@media all and (min-width: 800px) {
+  .article    { flex: 3 0px; }
+  .aside { order: 1; } 
+  .article    { order: 2; }
+  .footer {order: 3;}
+}
+
+@media all and (max-width: 800px) { 
+  .header__navigation__item {
+    margin-left: 10px; 
+    margin-right: 10px;
+  }
+  .header__navigation:last-child {
+    margin-right: 10px;
+  }
+  .aside__menu > li {
+    text-align: center;
+  }
+  .aside__menu__item {
+    text-align: center;
+  }
 }

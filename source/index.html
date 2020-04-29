@@ -2,53 +2,120 @@
 <html lang="ru">
 	<head>
 		<meta charset="utf-8">
-        <title>Tensor School</title>
+        <title>Онлайн-школа Тензор</title>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-        <div id="wraper">
-            <header>
-                <img src="img/logo.jpg" alt="Логотип Тензор"/>
-                <span title="Tensor School">Tensor School</span>
-                <p title="Это страница школы Тензор в городе Уфа. Тут вы можете познакомиться с нашими учениками и посмотреть темы занятий.">Это страница школы Тензор в городе Уфа. Тут вы можете познакомиться с нашими учениками и посмотреть темы занятий.</p>
+        <div class="wrapper">
+            <header class="header">
+                <ul class="header__navigation">
+                    <li><a class="header__title" href="#">Онлайн-школа Тензор</a></li>
+                    <li class="header__spacer"></li>
+                    <li class="header__navigation__item"><a href="#"></a></li>
+                    <li class="header__navigation__item"><a href="#"></a></li>
+                    <li class="header__navigation__item"><a href="#"></a></li>
+                </ul>
             </header>
-            <div class="main-content">
-                <div class="user">
-                    <img src="img/ava01.jpg" alt="Аватар пользователя"/>
-                    <p class="user-name" title="Фамилия Имя">Фамилия Имя</p>
-                    <span class="user-information" title="ВУЗ Курс">ВУЗ Курс</span>
+            <article class="article">
+                <div class="article__main">
+                    <div class="article__main__item">
+                        <img src="img/Intro.png" alt="Intro image" class="article__main__item__image">
+                        <div class="article__main__item__information">
+                            <h2>00 - Введение</h2>
+                            <p class="item-date">20 апреля 2020</p>
+                            <p class="item-text">Привет!</p> 
+                            <p class="item-text">Рад приветствовать тебя на нулевом, вводном занятии. Почему нулевом? Настоящий программист считает с нуля! 😄</p>
+                        </div>
+                        <div class="article__main__item__ref">
+                            <a href="#" class="item-ref">Перейти</a>
+                        </div>
+                    </div>
+                    <div class="article__main__item">
+                        <img src="img/Lesson01.png" alt="Intro image" class="article__main__item__image">
+                        <div class="article__main__item__information">
+                            <h2>01 - Стили</h2>
+                            <p class="item-date">23 апреля 2020</p>
+                            <p class="item-text">Сегодня на занятии мы узнаем</p> 
+                            <p class="item-text">Что такое стили<br>Из чего они состоят<br>Какие бывают стили<br>Познакомились с единицами измерения</p>
+                        </div>
+                        <div  class="article__main__item__ref"><a href="#" class="item-ref">Перейти</a></div>
+                    </div>
+                    <div class="article__main__item">
+                        <img src="img/Lesson02.png" alt="Intro image" class="article__main__item__image">
+                        <div class="article__main__item__information">
+                            <h2>02 - Флексы, адаптивка, БЭМ и DOM</h2>
+                            <p class="item-date">27 апреля 2020</p>
+                            <p class="item-text">Сегодня на вебинаре ты узнаешь, что такое DOM, БЭМ и много других новых слов! Таблицы - прошлый век. Флоуты - устарели. Дивы - криво. Что же делать? Как сверстать красиво и не сломать мозг? Выход есть - Flex & Grid!</p>
+                        </div>
+                        <div  class="article__main__item__ref"><a href="#" class="item-ref">Перейти</a></div>
+                    </div>
+                    <div class="article__main__item">
+                        <img src="img/Lesson03.png" alt="Intro image" class="article__main__item__image">
+                        <div class="article__main__item__information">
+                            <h2>03 - JavaScript: Начало</h2>
+                            <p class="item-date">30 апреля 2020</p>
+                            <p class="item-text">С чего начать изучение JavaScript? Конечно же, с вебинара Онлайн-школы “Тензор”! Синтаксис, типы и структуры данных, функции и их использование - всё здесь!</p>
+                        </div>
+                        <div  class="article__main__item__ref"><a href="#" class="item-ref">Перейти</a></div>
+                    </div>
+                    <div class="article__main__item">
+                        <img src="img/Intro.png" alt="Intro image" class="article__main__item__image">
+                        <div class="article__main__item__information">
+                            <h2>00 - Введение</h2>
+                            <p class="item-date">20 апреля 2020</p>
+                            <p class="item-text">Привет!</p> 
+                            <p class="item-text">Рад приветствовать тебя на нулевом, вводном занятии. Почему нулевом? Настоящий программист считает с нуля! 😄</p>
+                        </div>
+                        <div  class="article__main__item__ref"><a href="#" class="item-ref">Перейти</a></div>
+                    </div>
+                    <div class="article__main__item">
+                        <img src="img/Intro.png" alt="Intro image" class="article__main__item__image">
+                        <div class="article__main__item__information">
+                            <h2>00 - Введение</h2>
+                            <p class="item-date">20 апреля 2020</p>
+                            <p class="item-text">Привет!</p> 
+                            <p class="item-text">Рад приветствовать тебя на нулевом, вводном занятии. Почему нулевом? Настоящий программист считает с нуля! 😄</p>
+                        </div>
+                        <div  class="article__main__item__ref"><a href="#" class="item-ref">Перейти</a></div>
+                    </div>
+                    <div class="article__main__item">
+                        <img src="img/Intro.png" alt="Intro image" class="article__main__item__image">
+                        <div class="article__main__item__information">
+                            <h2>00 - Введение</h2>
+                            <p class="item-date">20 апреля 2020</p>
+                            <p class="item-text">Привет!</p> 
+                            <p class="item-text">Рад приветствовать тебя на нулевом, вводном занятии. Почему нулевом? Настоящий программист считает с нуля! 😄</p>
+                        </div>
+                        <div  class="article__main__item__ref"><a href="#" class="item-ref">Перейти</a></div>
+                    </div>
+                    <div class="article__main__item">
+                        <img src="img/Intro.png" alt="Intro image" class="article__main__item__image">
+                        <div class="article__main__item__information">
+                            <h2>00 - Введение</h2>
+                            <p class="item-date">20 апреля 2020</p>
+                            <p class="item-text">Привет!</p> 
+                            <p class="item-text">Рад приветствовать тебя на нулевом, вводном занятии. Почему нулевом? Настоящий программист считает с нуля! 😄</p>
+                        </div>
+                        <div  class="article__main__item__ref"><a href="#" class="item-ref">Перейти</a></div>
+                    </div>
                 </div>
-
-                <div class="user">
-                    <img src="img/ava02.jpg" alt="Аватар пользователя"/>
-                    <p class="user-name" title="Двойная-Фамилия Имя Отчество">Двойная-Фамилия Имя Отчество</p>
-                    <span class="user-information" title="ВУЗ Курс">ВУЗ Курс</span>
+                <div class="article__more-cards">
+                    <a href="https://youtu.be/OCoxzyrgRi8" target="_blank"> Показать ещё</a>
                 </div>
-
-                <div class="user">
-                    <img src="img/ava03.jpg" alt="Аватар пользователя"/>
-                    <p class="user-name" title="Фамилия Имя">Фамилия Имя</p>
-                    <span class="user-information" title="ВУЗ Курс">ВУЗ Курс</span>
-                </div>
-
-                <div class="user">
-                    <img src="img/ava04.jpg" alt="Аватар пользователя"/>
-                    <p class="user-name" title="Фамилия Имя">Фамилия Имя</p>
-                    <span class="user-information" title="ВУЗ Курс">ВУЗ Курс</span>
-                </div>
-
-                <div class="user">
-                    <img src="img/ava05.jpg" alt="Аватар пользователя"/>
-                    <p class="user-name" title="Фамилия Имя">Фамилия Имя</p>
-                    <span class="user-information" title="ВУЗ Курс">ВУЗ Курс</span>
-                </div>
-
-                <div class="user">
-                    <img src="img/ava06.jpg" alt="Аватар пользователя"/>
-                    <p class="user-name" title="Фамилия Имя">Фамилия Имя</p>
-                    <span class="user-information" title="ВУЗ Курс">ВУЗ Курс</span>
-                </div>
-            </div>
+            </article>
+            <aside class="aside">
+                <ul class="aside__menu">
+                    <li><a href="#" class="aside__menu__item">Мои курсы</a></li>
+                    <li class="aside__menu__item_active"><a href="#" class="aside__menu__item">Будущий инженер-программист</a></li>
+                    <li><a href="#"class="aside__menu__item">Python-разработчик</a></li>
+                </ul>
+            </aside>
+           <footer class="footer">
+                <span class="footer__copyrights">(c) 2020, Компания "Тензор"</span>
+                <div class="footer__spacer"></div>
+                <a href="№" class="footer__agreement">Правила пользования</a>
+           </footer>
         </div>
 	</body>
 </html>
