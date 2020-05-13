@@ -129,4 +129,6 @@ header p {
   grid-column-start: 5;
   grid-column-end: 8;
   text-align: left;
+  font-size: 16px;
+  margin-top: 20px;
 }
