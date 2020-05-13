@@ -56,7 +56,7 @@ class Student {
     this.university = params.university;
     this.course = params.course;
     this.birthDate = params.birthDate;
-    this.photoUrl = params.photoUrl
+    this.photoUrl = params.photoUrl;
   }
 
   get birthDateStr() {
@@ -103,11 +103,9 @@ class Student {
   appendToDOM() {
     const layout = this.render();
     document.getElementById('main-content').append(layout);
-    layout.addEventListener('click', (event) => {
-      if (event.currentTarget === event.target) {
-        this.openCard(event.currentTarget);
-      }
-    });
+    layout.onclick = (e) => {
+        this.openCard(e.currentTarget);
+    };
   }
 
   openCard(currentCard) {
@@ -119,7 +117,10 @@ class Student {
     imgClose.setAttribute('alt', 'Закрыть');
     div.setAttribute('class', 'mini-card');
     div.appendChild(imgClose);
-  
+    imgClose.onclick = (e) => {
+      div.remove();
+    };
+
     const pFullName = document.createElement('p');
     pFullName.setAttribute('class', 'mini-card__user-name');
     let txt = document.createTextNode(this.fullName);
@@ -161,14 +162,21 @@ class Student {
     imgAvatar.setAttribute('src', this.photoUrl);
     imgAvatar.setAttribute('alt', 'Аватар пользователя');
     div.appendChild(imgAvatar);
-  
-    currentCard.appendChild(div);    
     
-    imgClose.addEventListener('click', (e) => {
-        div.remove();   
+    currentCard.parentNode.append(div);    
+    div.style.left = currentCard.offsetLeft + 'px';
+    div.style.top = currentCard.offsetTop + 'px';  
+    if (div.getBoundingClientRect().right > document.body.clientWidth) {
+      div.style.left = document.body.clientWidth - div.getBoundingClientRect().width + 'px';
+    }
+    window.addEventListener("resize", (e) => {
+      div.style.left = currentCard.offsetLeft + 'px';
+      div.style.top = currentCard.offsetTop + 'px'; 
+      if (div.getBoundingClientRect().right > document.body.clientWidth) {
+        div.style.left = document.body.clientWidth - div.getBoundingClientRect().width + 'px';
+      }
     });
   }
-
 };
 
 
