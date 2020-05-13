@@ -247,6 +247,24 @@ class SchoolList {
   add(person) {
     this.list.push(person);
   }
+
+  remove(name) {
+    this.list.map((item, index) => {
+      if (item.fullName === name) {
+        this.list.splice(index, 1);
+      }
+    });
+  }
+
+  find(name) {
+    const listOfPerson = [];
+    this.list.map((item, index) => {
+      if (item.fullName === name) {
+        listOfPerson.push(item);
+      }
+    })
+    return listOfPerson;
+  }
 }
 
 class School {
@@ -262,21 +280,11 @@ class School {
   }
 
   dismiss(name) {
-    this.school.list.map((item, index) => {
-      if (item.fullName === name) {
-        this.school.list.splice(index, 1);
-      }
-    })
+    this.school.remove(name);
   }
 
   getPerson(name) {
-    const listOfPerson = [];
-    this.school.list.map((item, index) => {
-      if (item.fullName === name) {
-        listOfPerson.push(item);
-      }
-    })
-    return listOfPerson;
+    return this.school.find(name);
   }
 }
 
