@@ -1,3 +1,18 @@
+'use strict'
+
+/*
+* Рекомендация по внедрению шаблонов вёрстки была
+* не проигнорирована, а принята во внимание.
+* Реализация была отложена ввиду некоторой "второстепенности".
+* Более важным для меня было отладить имеющиеся баги
+* и выполнить новое домашнее задание по достаточно объёмной
+* и не самой лёгкой теме.
+* Спасибо за отзывы и рекомендации!
+*/
+
+
+// Массив с данными для карточек классов Student и Teacher
+
 const studentArr = [
   {
     fullName: 'Вася Иванов',
@@ -48,6 +63,12 @@ const studentArr = [
   }
 ];
 
+/**
+ * Родительский класс для Student и Teacher
+ * Код был максимально вынесен в класс Person
+ * во избежание копипаста
+ */
+
 class Person {
 
   constructor(params) {
@@ -62,6 +83,12 @@ class Person {
     this.jobState = '';
   }
 
+  /**
+   * Получение даты рождения
+   * 
+   * @returns - Строка формата 'число месяца'.
+   */
+
   get birthDateStr() {
     const monthName = ['января', 'февраля', 'марта', 
                       'апреля', 'мая', 'июня', 'июля', 
@@ -71,6 +98,14 @@ class Person {
                   monthName[this.birthDate.getMonth()];
     return dateStr;
   }
+
+  /**
+   * Расчёт возраста по дате рождения
+   * 
+   * @returns - Строка формата 'число год/года/лет'.
+   * Подстановка слов год/года/лет происходит в зависимости
+   * от возраста.
+   */
 
   get age() {
     const today = new Date();
@@ -94,6 +129,12 @@ class Person {
     return studentAge + ageStr;
   }
 
+  /**
+   * Добавление сгенерированной карточки в DOM.
+   * Добавление события открытия мини-карточки
+   * при клике на основную карточку.
+   */
+
   appendToDOM() {
     const layout = this.render();
     document.getElementById('main-content').append(layout);
@@ -104,101 +145,78 @@ class Person {
     };
   }
   
+  /**
+   * Построение карточки
+   * 
+   * @returns {div} - Node элемент, содержащий карточку
+   * и шаблон мини-карточки
+   */
+
   render() {
     const div = document.createElement('div');
-    const img = document.createElement('img');
-    const p = document.createElement('p');
-    const span = document.createElement('span');
     div.className = 'user';
-    img.className = 'user-avatar';
-    img.setAttribute('src', this.photoUrl);
-    img.setAttribute('alt', 'Аватар пользователя');
-    p.className = 'user-name';
-    let txt = document.createTextNode(this.fullName);
-    p.appendChild(txt);
-    span.className = 'user-information';
-    txt = document.createTextNode(this.university + ' ' + this.state);
-    span.appendChild(txt);
-    div.appendChild(img);
-    div.appendChild(p);
-    div.appendChild(span);
+    const txt = `
+    <img class="user-avatar" src="${this.photoUrl}" alt="Аватар пользователя">
+    <p class="user-name">${this.fullName}</p>
+    <span class="user-information">${this.university} ${this.state}</span>
+    <template class="tmpl">
+      <div class="mini-card">
+        <img class="mini-card__close" src="img/icon-off.png" alt="Закрыть">
+        <p class="mini-card__user-name">${this.fullName}</p>
+        <p class="mini-card__info-title">День рождения</p>
+        <p class="mini-card__info-data">${this.birthDateStr}</p>
+        <p class="mini-card__info-data">${this.age}</p>
+        <p class="mini-card__info-title">${this.job}</p>
+        <p class="mini-card__info-data">${this.university} ${this.jobState}</p>
+        <img class="mini-card__avatar" src="${this.photoUrl}" alt="Аватар пользователя">
+      </div>
+    </template>
+    `;
+    div.innerHTML = txt;
     return div;
   }
 
-  openCard(currentCard) {
-    const div = document.createElement('div');
-  
-    const imgClose = document.createElement('img');
-    imgClose.className = 'mini-card__close';
-    imgClose.setAttribute('src', 'img/icon-off.png');
-    imgClose.setAttribute('alt', 'Закрыть');
-    div.className = 'mini-card';
-    div.appendChild(imgClose);
-    imgClose.onclick = (e) => {
-      div.remove();
-      this.isMiniCardOpen = false;
-    };
+  /**
+   * Открытие мини-карточки.
+   * Добавление события закрытия мини-карточки
+   * при клике на крестик.
+   * Смещение мини-карточки влево, в случае выхода её границы
+   * за пределы окна браузера
+   * 
+   * @param {*} currentCard - объект, на котором был произведён
+   * клик.
+   */
 
-    const pFullName = document.createElement('p');
-    pFullName.className = 'mini-card__user-name';
-    let txt = document.createTextNode(this.fullName);
-    pFullName.appendChild(txt);
-    div.appendChild(pFullName); 
-  
-    const pBirthdayTitle = document.createElement('p');
-    pBirthdayTitle.className = 'mini-card__info-title';
-    txt = document.createTextNode('День рождения');
-    pBirthdayTitle.appendChild(txt);
-    div.appendChild(pBirthdayTitle);
-  
-    const pBirthdayData = document.createElement('p');
-    pBirthdayData.className = 'mini-card__info-data';
-    txt = document.createTextNode(this.birthDateStr);
-    pBirthdayData.appendChild(txt);
-    div.appendChild(pBirthdayData);
-  
-    const pAgeData = document.createElement('p');
-    pAgeData.className = 'mini-card__info-data';
-    txt = document.createTextNode(this.age);
-    pAgeData.appendChild(txt);
-    div.appendChild(pAgeData);
-  
-    const pStudyTitle = document.createElement('p');
-    pStudyTitle.className = 'mini-card__info-title';
-    txt = document.createTextNode(this.job);
-    pStudyTitle.appendChild(txt);
-    div.appendChild(pStudyTitle);
-  
-    const pStudyData = document.createElement('p');
-    pStudyData.className = 'mini-card__info-data';
-    txt = document.createTextNode(this.university + ', ' + this.jobState);
-    pStudyData.appendChild(txt);
-    div.appendChild(pStudyData);
-  
-    const imgAvatar = document.createElement('img');
-    imgAvatar.className = 'mini-card__avatar';
-    imgAvatar.setAttribute('src', this.photoUrl);
-    imgAvatar.setAttribute('alt', 'Аватар пользователя');
-    div.appendChild(imgAvatar);
-    
+  openCard(currentCard) {
+    const templateCard = currentCard.querySelector('.tmpl').content.cloneNode(true);
+    currentCard.appendChild(templateCard);
+
+
     this.isMiniCardOpen = true;
 
-    currentCard.parentNode.append(div);    
-    div.style.left = currentCard.offsetLeft + 'px';
-    div.style.top = currentCard.offsetTop + 'px';  
-    if (div.getBoundingClientRect().right > document.body.clientWidth) {
-      div.style.left = document.body.clientWidth - div.getBoundingClientRect().width + 'px';
+    const div = currentCard.querySelector('.mini-card');
+    currentCard.querySelector('.mini-card__close').onclick = (e) => {
+      e.stopPropagation()
+      div.remove();
+      this.isMiniCardOpen = false;
+    };    
+    div.style.left = 0;
+    if (div.getBoundingClientRect().right > document.body.clientWidth - 10) {
+      div.style.left = document.body.clientWidth - div.getBoundingClientRect().right - 10 + 'px';
     }
     window.addEventListener("resize", (e) => {
-      div.style.left = currentCard.offsetLeft + 'px';
-      div.style.top = currentCard.offsetTop + 'px'; 
-      if (div.getBoundingClientRect().right > document.body.clientWidth) {
-        div.style.left = document.body.clientWidth - div.getBoundingClientRect().width + 'px';
+      div.style.left = 0;
+      if (div.getBoundingClientRect().right > document.body.clientWidth -10) {
+        div.style.left = document.body.clientWidth - div.getBoundingClientRect().right - 10 + 'px';
       }
     });
   }
 
 }
+
+/**
+ * Класс, описывающий поля, специфические для обучающихся
+ */
 
 class Student extends Person {
 
@@ -213,6 +231,9 @@ class Student extends Person {
 
 }
 
+/**
+ * Класс, описывающий поля, специфические для учителей
+ */
 
 class Teacher extends Person {
 
@@ -227,6 +248,11 @@ class Teacher extends Person {
 
 }
 
+/**
+ * Фабрика для создания объектов Student или Teacher
+ * в зависимости от имеющихся полей в переданных параметрах
+ */
+
 class PersonFactory {
   create(params) {
     if (params.course) {
@@ -239,15 +265,29 @@ class PersonFactory {
   }
 }
 
+/**
+ * Класс - список всех сотрудников и обучающихся школы
+ */
+
 class SchoolList {
   constructor() {
     this.list = [];
   }
 
+  /**
+   * Метод добавления студента/учителя в список 
+   * @param {*} person - объект, созданный фабрикой
+   */
+
   add(person) {
     this.list.push(person);
   }
 
+  /**
+   * Метод удаляет студента/учителя из списока
+   * @param {*} name - полное имя удаляемого человека
+   */
+  
   remove(name) {
     this.list.map((item, index) => {
       if (item.fullName === name) {
@@ -255,6 +295,12 @@ class SchoolList {
       }
     });
   }
+
+  /**
+   * Метод ищет в списке людей с заданным полным именем
+   * @param {*} name - полное имя искомого человека
+   * @returns - массив с объектами, соответствующими поиску
+   */
 
   find(name) {
     const listOfPerson = [];
@@ -267,26 +313,51 @@ class SchoolList {
   }
 }
 
+/**
+ * Класс, описывающий учебное заведение
+ */
+
 class School {
   constructor() {
     this.school = new SchoolList();
+    this.personFactory = new PersonFactory();
   }
 
+  /**
+   * Метод зачисления сотрудников/студентов в базу
+   * @param {*} params - параметры, описывающие зачисляемого
+   * @returns - объект, описывающий зачисленного человека
+   */
+
   enroll(params) {
-    const personFactory = new PersonFactory();
-    let person = personFactory.create(params);
+    const person = this.personFactory.create(params);
     this.school.add(person);
     return person;
   }
+
+  /**
+   * Метод исключения сотрудников/студентов из базы
+   * @param {*} name - полное имя человека
+   */
 
   dismiss(name) {
     this.school.remove(name);
   }
 
+  /**
+   * Метод поиска сотрудников/студентов по полному имени
+   * @param {*} name - полное имя искомого человека
+   * @returns - массив с объектами, соответствующими поиску
+   */
   getPerson(name) {
     return this.school.find(name);
   }
 }
+
+
+/**
+ * Основная функция выполнения скрипта
+ */
 
 function init () {
   const school = new School();
