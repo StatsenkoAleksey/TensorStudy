@@ -1,6 +1,6 @@
 'use strict'
 
-import {Student, Teacher, PersonFactory, studentArr} from './personLib.js';
+import {PersonFactory, studentArr} from './personLib.js';
 import {School} from './school.js';
 
 // небольшая шапка, чтобы привести вёрстку к виду прошлых заданий
