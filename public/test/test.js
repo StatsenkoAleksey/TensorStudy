@@ -3,9 +3,9 @@ import {PersonFactory} from '../js/personFactory.js';
 import { Student } from '../js/student.js';
 import { Teacher } from '../js/teacher.js';
 
-describe("Тестирование класса Person", function() {
+describe("Тестирование Фабрики", function() {
    'use strict';
-    it('Тест конструктора', function() {
+    it('Тест конструктора с пустыми параметрами', function() {
         // arrange
         const params = {};
 
