@@ -1,7 +1,7 @@
 import {Person} from '../js/person.js';
-import {Component} from '../js/component.js';
 import {PersonFactory} from '../js/personFactory.js';
 import { Student } from '../js/student.js';
+import { Teacher } from '../js/teacher.js';
 
 describe("Тестирование класса Person", function() {
    'use strict';
@@ -15,7 +15,7 @@ describe("Тестирование класса Person", function() {
 
         //assert
         assert(person instanceof Person);
-    })
+    });
 
     
     it('Тест конструктора с параметрами cтудента', function() {
@@ -32,10 +32,29 @@ describe("Тестирование класса Person", function() {
 
         // act
         const personFactory = new PersonFactory(params);
-        const person = personFactory.create({});
-        console.log(person);
+        const person = personFactory.create(params);
         //assert
         assert(person instanceof Student);
+    });
+
+    
+    it('Тест конструктора с параметрами преподавателя', function() {
+        // arrange
+        const params = {
+            fullName: "Вика Цукерберг",
+            photo: "img/ava05.jpg",
+            university: "БГПУ",
+            post: "Преподаватель",
+            birthDate: "2001-02-08T00:00:00.000Z",
+            phone: "+7 (963) 123-45-67",
+            active: "2020-03-05T15:00:00.000Z"
+        };
+
+        // act
+        const personFactory = new PersonFactory(params);
+        const person = personFactory.create(params);
+        //assert
+        assert(person instanceof Teacher);
     })
 });
 
