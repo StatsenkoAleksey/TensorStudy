@@ -1,0 +1,64 @@
+{
+  "person": [
+    {
+      "id": 1,
+      "fullName": "Миша Петров",
+      "photo": "img/ava01.jpg",
+      "university": "Угату",
+	  "course": "2",
+      "birthDate": "2000-05-01T00:00:00.000Z",
+      "phone": "+7 (963) 123-45-67",
+      "active": "2020-04-11T18:01:47.339Z"
+    },
+    {
+      "id": 2,
+      "fullName": "Маша Иванова",
+      "photo": "img/ava02.jpg",
+      "university": "Угату",
+	  "course": "3",
+      "birthDate": "1998-11-13T00:00:00.000Z",
+      "phone": "+7 (963) 123-45-67",
+      "active": "2020-04-03T15:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "fullName": "Женя Серова",
+      "photo": "img/ava03.jpg",
+      "university": "Угату",
+	  "course": "1",
+      "birthDate": "1998-11-13T00:00:00.000Z",
+      "phone": "+7 (963) 123-45-67",
+      "active": "2020-04-03T15:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "fullName": "Вася Васильев",
+      "photo": "img/ava04.jpg",
+      "university": "Угату",
+	  "post": "Ассистент",
+      "birthDate": "2000-05-01T00:00:00.000Z",
+      "phone": "+7 (963) 123-45-67",
+      "active": "2020-04-11T18:01:47.340Z"
+    },
+    {
+      "id": 5,
+      "fullName": "Вика Цукерберг",
+      "photo": "img/ava05.jpg",
+      "university": "БГПУ",
+	  "post": "Преподаватель",
+      "birthDate": "2001-02-08T00:00:00.000Z",
+      "phone": "+7 (963) 123-45-67",
+      "active": "2020-03-05T15:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "fullName": "Иван Иванов",
+      "photo": "img/ava06.jpg",
+      "university": "Угату",
+	  "post": "Профессор",
+      "birthDate": "1974-07-24T00:00:00.000Z",
+      "phone": "+7 (963) 123-45-67",
+      "active": "2020-04-03T15:00:00.000Z"
+    }
+  ]
+}
